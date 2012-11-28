@@ -16,22 +16,22 @@ typedef struct myElement {
  */
 myElement *createNewNode(char *slowo)
 {
-	myElement *newElement = malloc(sizeof(myElement));
+    myElement *newElement = malloc(sizeof(myElement));
 	if (NULL == newElement)
-  {
-		printf("Pamieć nie mogla zostac zarezerowana poprawnie.\n");
+    {
+        printf("Pamieć nie mogla zostac zarezerowana poprawnie.\n");
 		return NULL;
 	}
 
 	newElement->word = malloc(SIZE);
 	if(NULL == newElement->word)
-  {
+    {
 		printf("Pamiec nie mogla zostac zarezerwowana pomyslnie dla ->word\n");
 		free(newElement);
 		return NULL;
 	}
 
-  //Kopiowanie znakow z jednego chara do drugiego
+    //Kopiowanie znakow z jednego chara do drugiego
 	strncpy(newElement->word,slowo,30);
 	newElement->arity = 1;
 	newElement->next = NULL;
@@ -50,8 +50,8 @@ myElement *addNodeToList(myElement *head, char *slowo)
 
   if (NULL == head)
   {
-    myElement *newElement = createNewNode(slowo);// tworzenie nowego elementu
-    if(newElement == NULL) return head; //BRAK PAMIECI.
+    myElement *newElement = createNewNode(slowo);
+    if(newElement == NULL) return head;
     head = newElement;
   } else {
     current = head;
@@ -101,37 +101,39 @@ myElement *deleteOldNode(myElement *head, char *slowo)
 
   if (NULL == head)
   {
-		printf("Lista jest pusta.\n");
-		return head;
-	} else {
-  	current = head;
-  	while(current != NULL)
-    {
-  	if(0 == strcmp(slowo, current->word)) {
-  		if (current->arity>1)
+      printf("Lista jest pusta.\n");
+      return head;
+  } else {
+      current = head;
+      while(current != NULL)
       {
-  	 	 	current->arity--;
-  	  	return head;
-  		} else {
-    	 if (NULL == previous)
-       { 	// Jesli usuwany jest pierwszy element,
-        head=current->next; // wskaznik poprzednika nie jest przestawiany
+        if(0 == strcmp(slowo, current->word))
+        {
+            if (current->arity>1)
+            {
+                current->arity--;
+                return head;
+            } else {
+                if (NULL == previous)
+                { 	// Jesli usuwany jest pierwszy element,
+                    head=current->next; // wskaznik poprzednika nie jest przestawiany
+                } else {
+                    previous->next = current->next;
+                }
+                
+                free(current->word);
+                free(current);
+                return head;
+            }
         }
-   			else {
-     				previous->next = current->next;
-    			}
-    			free(current->word);
-    			free(current);
-    			return head;
-  		}
-       	}
-       	previous = current;
-       	current = current->next;
+            
+        previous = current;
+        current = current->next;
 
-		}
-	}
-	printf("Nie ma takiego slowa.\n");
-  	return head;
+      }
+  }
+  printf("Nie ma takiego slowa.\n");
+  return head;
 }
 
 /**
