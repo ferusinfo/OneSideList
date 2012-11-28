@@ -115,8 +115,8 @@ myElement *deleteOldNode(myElement *head, char *slowo)
                 return head;
             } else {
                 if (NULL == previous)
-                { 	// Jesli usuwany jest pierwszy element,
-                    head=current->next; // wskaznik poprzednika nie jest przestawiany
+                {
+                    head=current->next;
                 } else {
                     previous->next = current->next;
                 }
