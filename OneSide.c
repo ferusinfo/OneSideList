@@ -120,13 +120,13 @@ myElement *deleteOldNode(myElement *head, char *slowo)
                 } else {
                     previous->next = current->next;
                 }
-                
+
                 free(current->word);
                 free(current);
                 return head;
             }
         }
-            
+
         previous = current;
         current = current->next;
 
@@ -167,10 +167,10 @@ int main()
 	do
   {
     printf("=============================\n\n");
-  	printf("0 - Zakonczenie programu\n");
   	printf("1 - Dopisanie wyrazu\n");
   	printf("2 - Usuniecie wyrazu\n");
   	printf("3 - Wyswietlenie zawartosci listy\n");
+    printf("0 - Wyjscie z programu...\n");
     printf("=============================\n\n");
   	scanf("%i",&myChoice);
 
