@@ -60,6 +60,7 @@ myElement *addNodeToList(myElement *head, char *slowo)
     {
       if (0 == strcmp(slowo,current->word))
       {
+        printf("Element [%s] już istnieje, zwiekszam jego krotnosc ;)\n", slowo);
         current->arity += 1;
         return head;
       }
@@ -79,8 +80,8 @@ myElement *addNodeToList(myElement *head, char *slowo)
           head = newElement;
         } else {
           previous->next = newElement;
-          return head;
         }
+        return head;
       }
 
     previous = current;
@@ -150,7 +151,7 @@ void viewNodesList(myElement *head)
 		current = head;
 		while (current != NULL)
     {
-  		printf("Slowo: %s || Wystepuje razy: %i\n",current->word,current->arity);
+  		printf("Word: [%s] || Count: [%i]\n",current->word,current->arity);
   		current = current->next;
     }
   }
