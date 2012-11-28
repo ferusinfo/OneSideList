@@ -1,9 +1,10 @@
+//String Length
+#define SIZE 31
+
+//Libraries
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-
-//String Length
-#define SIZE 31
 
 typedef struct myElement {
 	char *word;
@@ -166,7 +167,7 @@ int main()
 
 	do
   {
-    printf("=============================\n\n");
+    printf("=============================\n");
   	printf("1 - Dopisanie wyrazu\n");
   	printf("2 - Usuniecie wyrazu\n");
   	printf("3 - Wyswietlenie zawartosci listy\n");
